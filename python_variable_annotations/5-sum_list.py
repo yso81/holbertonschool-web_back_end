@@ -2,7 +2,7 @@
 """
 Function that takes a list of floats and returns the sum of its float
 """
-from typing import list
+from typing import List
 
 def sum_list(input_list: list[float]) -> float:
     """
