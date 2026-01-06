@@ -2,8 +2,7 @@
 """
 Function that takes a list of floats and returns the sum of its float
 """
-import math
-
+from typing import list
 
 def sum_list(input_list: list[float]) -> float:
     """
@@ -15,4 +14,4 @@ def sum_list(input_list: list[float]) -> float:
     Returns:
     sum of input_list: float
     """
-    return math.fsum(input_list)
+    return sum(input_list)
