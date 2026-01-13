@@ -41,11 +41,11 @@ class Server:
         """
         Takes two integer arguments page with default value 1
         and page_size with default value 10
-        
+
         Args:
             page (int): The current page number
             page_size (int): Items per page
-            
+
         Returns:
             List[List]: The correct list of rows (dataset)
         """
