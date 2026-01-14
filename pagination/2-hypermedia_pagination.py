@@ -92,5 +92,5 @@ class Server:
             "data": data,            # The list of dataset rows
             "next_page": next_page,  # Navigation to next
             "prev_page": prev_page,  # Navigation to previous
-            "total_pages": total_pages # Total available pages
+            "total_pages": total_pages  # Total available pages
         }
