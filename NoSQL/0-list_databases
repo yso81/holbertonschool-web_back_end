@@ -1,1 +1,1 @@
-mongosh --quiet --eval "db.adminCommand('listDatabases')"
+show databases
