@@ -1,1 +1,1 @@
-echo "show dbs" > 0-list_databases
+show dbs
