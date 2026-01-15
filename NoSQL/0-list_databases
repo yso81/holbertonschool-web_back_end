@@ -1,1 +1,26 @@
-show databases
+from pymongo import MongoClient
+import sys
+
+# Connection URI for your MongoDB instance
+uri = 'mongodb://localhost:27017/'
+
+def list_all_databases():
+    try:
+        client = MongoClient(uri)
+        # The list_database_names method returns a list of strings
+        db_names = client.list_database_names()
+        
+        print("Databases:")
+        for db_name in db_names:
+            print(f"- {db_name}")
+
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        sys.exit(1)
+    finally:
+        # Close the connection
+        if client:
+            client.close()
+
+if __name__ == "__main__":
+    list_all_databases()
