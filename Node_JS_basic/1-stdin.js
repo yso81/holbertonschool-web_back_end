@@ -6,7 +6,10 @@ process.stdin.on("readable", () => {
     process.stdout.write(`Your name is: ${input}`);
   }
 });
-
+/**
+ * If stdout process in stream comes from the terminal, end the process
+ * with a message
+ */
 process.stdin.on("end", () => {
   process.stdout.write("This important software is now closing\n");
 });
