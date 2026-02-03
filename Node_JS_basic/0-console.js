@@ -1,3 +1,3 @@
-export default function displayMessage(message) {
-  process.stdout.write(message + '\n');
+export default function displayMessage(string) {
+  console.log(string);
 }
