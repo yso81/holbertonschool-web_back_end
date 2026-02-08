@@ -4,36 +4,39 @@ const app = express();
 const port = 1245;
 
 /**
- * Reads student data from a CSV file and organizes it by field.
- * @param {string} filePath The path to the CSV database file.
- * @returns {Promise<string>} A promise that resolves to a string summarizing student data,
- *                             or rejects with an error message if the file cannot be read.
+ * Reads student data from a CSV file and returns it by field
+ * @param {string} filePath The path to the CSV file
+ * @returns {Promise<string>} A promise that resolves to a string student data
  */
 
 async function countStudents(filePath) {
+    console.log(`Attempting to read file: ${filePath}`); //
     return new Promise((resolve, reject) => {
         fs.readFile(filePath, { encoding: 'utf-8'})
             .then((data) => {
+                console.log('File read successfully.'); //
                 const lines = data.split('\n').filter(line => line.trim() !== '');
+                console.log(`Number of non-empty lines: ${lines.length}`); //
                 if (lines.length === 0) {
+                    console.log('No valid lines found after filtering.'); //
                     resolve('This is the list of our students\nNumber of students: 0');
                     return;
                 }
 
                 const students = lines.slice(1).map(line => line.split(','));
                 const studentCountByField = {};
-                const studentsNameByField = {};
+                const studentNameByField = {};
                 let totalStudents = 0;
                 students.forEach(student => {
                     if (student.length === 4) {
                         const field = student[3].trim();
                         const firstName = student[0].trim();
-                        if (!studentCountsByField[field]) {
+                        if (!studentCountByField[field]) {
                             studentCountByField[field] = 0;
-                            studentsNameByField[field] = [];
+                            studentNameByField[field] = [];
                         }
                         studentCountByField[field]++;
-                        studentsNameByField[field].push(firstName);
+                        studentNameByField[field].push(firstName);
                         totalStudents++;
                     }
                 });
@@ -41,12 +44,13 @@ async function countStudents(filePath) {
                 for (const field in studentCountByField) {
                     if (Object.hasOwnProperty.call(studentCountByField, field)) {
                         result += `\nNumber of students in ${field}: ${studentCountByField[field]}. List: 
-${studentsNameByField[field].join(', ')}`;
+${studentNameByField[field].join(', ')}`;
                     }
                 }
                 resolve(result);
         })
-        .catch(() => {
+        .catch((err) => {
+            console.error(`Error reading file ${filePath}:`, err); //
             reject(new Error('Cannot load the database'));
         });
     });
@@ -75,6 +79,7 @@ app.get('/students', async (req, res) => {
 if (require.main === module) {
     app.listen(port, () => {
         console.log(`server is listening on port ${port}`);
+        console.log(`Using database: ${process.argv[2] || 'No database path provided'}`);
     });
 }
 
