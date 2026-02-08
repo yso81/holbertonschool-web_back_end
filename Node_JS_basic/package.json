@@ -4,7 +4,7 @@
   "description": "NodeJS Basics",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --exec babel-node ./full_server/server.js",
+    "start": "nodemon --exec ./node_modules/.bin/babel-node ./full_server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -16,9 +16,8 @@
   "devDependencies": {
     "@babel/cli": "^7.28.6",
     "@babel/core": "^7.29.0",
+    "@babel/node": "^7.23.9",
     "@babel/preset-env": "^7.29.0",
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
     "chai": "^4.4.1",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.2.1",
@@ -26,7 +25,7 @@
     "eslint-plugin-jest": "^22.21.0",
     "lint": "*",
     "mocha": "^6.2.3",
-    "nodemon": "^2.0.22",
+    "nodemon": "^3.1.11",
     "request": "^2.88.2",
     "sinon": "^7.5.0"
   },
