@@ -3,6 +3,13 @@ const fs = require('fs').promises;
 const app = express();
 const port = 1245;
 
+/**
+ * Reads student data from a CSV file and organizes it by field.
+ * @param {string} filePath The path to the CSV database file.
+ * @returns {Promise<string>} A promise that resolves to a string summarizing student data,
+ *                             or rejects with an error message if the file cannot be read.
+ */
+
 async function countStudents(filePath) {
     return new Promise((resolve, reject) => {
         fs.readFile(filePath, { encoding: 'utf-8'})
