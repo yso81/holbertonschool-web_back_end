@@ -3,7 +3,8 @@ import csv
 import math
 from typing import List
 """
-A module that paginates through a dataset with starting page = 1 and page_size = 10
+A module that paginates through a dataset with starting page = 1 and
+page_size = 10
 """
 
 
@@ -24,6 +25,7 @@ def index_range(page: int, page_size: int) -> tuple:
     end_index = page * page_size
 
     return (start_index, end_index)
+
 
 class Server:
     """Server class to paginate a database of popular baby names.
@@ -52,20 +54,18 @@ class Server:
         Args:
             page: int = 1, the current page number that is greater than 0 and
             not negative
-        
+
         Returns:
-            List[]: The extracted list of items from the dataset
+            List[List]: The extracted lists from the dataset
         """
         assert isinstance(page, int) and page > 0
         assert isinstance(page_size, int) and page_size > 0
 
-        data = self.dataset
-
         pages = index_range(page, page_size)
 
-        start_page = pages[0]
-        end_page = pages[1]
+        start = pages[0]
+        end = pages[1]
 
+        data = self.dataset()
 
-
-        return data[start_page, end_page]
+        return data[start:end]
