@@ -2,6 +2,8 @@
 """
 module for pagination
 """ 
+
+
 def index_range(page: int, page_size: int) -> tuple:
     """
     Returns a tuple (start_index, end_index) where start_index is the first item of the
