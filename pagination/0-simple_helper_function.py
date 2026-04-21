@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
 """
 module for pagination
-""" 
+"""
 
 
 def index_range(page: int, page_size: int) -> tuple:
     """
-    Returns a tuple (start_index, end_index) where start_index is the first item of the
-    requested page and end_index is last item of the same requested page.
+    Returns a tuple (start_index, end_index) where start_index is the first
+    item of the requested page and end_index is last item of the same requested
+    page.
 
     Args:
         page: is the requested page
