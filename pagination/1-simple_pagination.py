@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-import csv
-import math
-from typing import List
 """
 A module that paginates through a dataset with starting page = 1 and
 page_size = 10
 """
+import csv
+import math
+from typing import List
 
 
 def index_range(page: int, page_size: int) -> tuple:
