@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
-#!/usr/bin/env python3
-"""
-A module that paginates through a dataset with starting page = 1 and
+"""A module that paginates through a dataset with starting page = 1 and
 page_size = 10
 """
 import csv
@@ -82,15 +80,17 @@ class Server:
         data = self.get_page(page, page_size)
 
         if page < total_pages:
-            next_page = page +1
+            next_page = page + 1
+
         else:
             next_page = None
 
         if page > 1:
             prev_page = page - 1
+
         else:
             prev_page = None
-        
+
         return {
             "page_size": len(data),
             "page": page,
