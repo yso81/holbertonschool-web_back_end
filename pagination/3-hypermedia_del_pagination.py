@@ -43,13 +43,6 @@ class Server:
                         page_size: int = 10) -> Dict[int, list]:
         """
         pagination using indexed_data
-        
-        Args:
-            index (int): The starting index of the page (None defaults to 0)
-            page_size (int): The number of items to retrieve.
-
-        Returns:
-            Dict: containing index, next_index, page_size, and data
         """
         assert isinstance(index, int) and index >= 0
 
