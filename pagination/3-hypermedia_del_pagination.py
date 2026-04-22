@@ -42,6 +42,9 @@ class Server:
     def get_hyper_index(self,
                         index: int = None,
                         page_size: int = 10) -> Dict[int, list]:
+        """
+        pagination using indexed_data
+        """
         assert isinstance(index, int) and index >= 0
 
         data = []
