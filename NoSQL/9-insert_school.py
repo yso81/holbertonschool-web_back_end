@@ -8,4 +8,5 @@ def insert_school(mongo_collection, **kwargs):
     Args: mongo_collection, **kwargs
     Returns: _id of newly inserted document
     """
-    return str(mongo_collection.insert_one(kwargs).inserted_id)
+    res = mongo_collection.insert_one(kwargs)
+    return res.inserted_id
