@@ -1,22 +1,21 @@
 const fs = require('fs/promises');
 
 async function countStudents(filePath) {
-  return new Promise(async (resolve, reject) => {
     try {
       const data = await fs.readFile(filePath, { encoding: 'utf8' });
 
       const lines = data.split('\n').filter(line => line.trim() !== '');
       if (lines.length === 0) {
         console.log('Number of students: 0');
-        return resolve();
+        return;
       }
 
-      const headers = lines[0].split(',');
+      const headers = lines[0].split(',').map(h => h.trim());
       const studentData = lines.slice(1);
 
       if (studentData.length === 0) {
         console.log('Number of students: 0');
-        return resolve();
+        return;
       }
 
       const students = studentData.map(line => {
@@ -49,11 +48,10 @@ async function countStudents(filePath) {
         }
       }
 
-      resolve();
     } catch (error) {
       reject(new Error('Cannot load the database'));
     }
-  });
-}
+  }
+
 
 module.exports = countStudents;
