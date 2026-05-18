@@ -18,7 +18,7 @@ if (req.url === '/') {
         output += message + '\n';
       };
 
-      await countStudents(databaseFile);
+      await countStudents(database);
 
       console.log = originalConsoleLog;
       res.end(output.trim());
