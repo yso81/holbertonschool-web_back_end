@@ -6,16 +6,14 @@ async function countStudents(filePath) {
 
     const lines = data.split('\n').filter((line) => line.trim() !== '');
     if (lines.length === 0) {
-      console.log('Number of students: 0');
-      return;
+      return 'Number of students: 0';
     }
 
     const headers = lines[0].split(',').map((h) => h.trim());
     const studentData = lines.slice(1);
 
     if (studentData.length === 0) {
-      console.log('Number of students: 0');
-      return;
+      return 'Number of students: 0';
     }
 
     const students = studentData.map((line) => {
@@ -43,9 +41,10 @@ async function countStudents(filePath) {
     for (const field in fields) {
       if (Object.prototype.hasOwnProperty.call(fields, field)) {
         const studentList = fields[field];
-        console.log(`Number of students in ${field}: ${studentList.length}. List: ${studentList.join(', ')}`);
+        report.push(`Number of students in ${field}: ${studentList.length}. List: ${studentList.join(', ')}`);
       }
     }
+    return report.join('\n');
   } catch (error) {
     throw new Error('Cannot load the database');
   }
