@@ -11,24 +11,15 @@ if (req.url === '/') {
     res.write('This is the list of our students\n');
 
     try {
-      const originalConsoleLog = console.log;
-      let output = '';
+      const output = await countStudents(databasefile);
+      res.end(output);
       
-      console.log = (message) => {
-        output += message + '\n';
-      };
-
-      await countStudents(database);
-
-      console.log = originalConsoleLog;
-      res.end(output.trim());
-    } catch (error) {
-      res.statusCode = 500;
-      res.end(error.message);
-    }
-  } else {
-    res.statusCode = 404;
-    res.end('Not Found');
+      } catch (error) {
+        res.end(error.message);
+      }
+    } else {
+      res.statusCode = 404;
+      res.end('Not Found');
   }
 });
 
