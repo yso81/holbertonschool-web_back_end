@@ -29,6 +29,8 @@ async function countStudents(filePath) {
 
     console.log(`Number of students: ${validStudents.length}`);
 
+    const report = [];
+    report.push(`Number of students: ${validStudents.length}`);
     const fields = {};
     validStudents.forEach((student) => {
       const { field } = student;
